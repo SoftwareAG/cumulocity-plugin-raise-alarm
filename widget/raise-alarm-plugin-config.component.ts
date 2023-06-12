@@ -11,7 +11,7 @@ import {
   template: `
     <div class="form-group">
       <c8y-form-group>
-        <label>Alarm Text</label>
+        <label>Alarm Reason</label>
         <textarea
           style="width:100%"
           [(ngModel)]="config.text"
@@ -20,29 +20,31 @@ import {
         ></textarea>
       </c8y-form-group>
       <c8y-form-group>
-        <label>Alarm Reason</label>
+        <label>Alarm Type</label>
         <input
           style="width:100%"
           placeholder="e.g. c8y_BreakdownAlarmType"
           [(ngModel)]="config.type"
           name="type"
-          [required]="true">
+          [required]="true"
+        />
       </c8y-form-group>
       <c8y-form-group>
         <label class="text-truncate" [title]="'Severity'">
-          {{ "Alarm Severity"}}
+          {{ "Alarm Severity" }}
         </label>
-        <select
-          class="form-control"
-          (change)="inputChange($event)"
-          [(ngModel)]="config.severity"
-        >
-          <option *ngFor="let entry of severities" [style.background]="entry">
-            {{ entry }}
-          </option>
-        </select>
+        <div class="c8y-select-wrapper">
+          <select
+            class="form-control"
+            (change)="inputChange($event)"
+            [(ngModel)]="config.severity"
+          >
+            <option *ngFor="let entry of severities" [style.background]="entry">
+              {{ entry }}
+            </option>
+          </select>
+        </div>
       </c8y-form-group>
-
     </div>
   `,
   viewProviders: [{ provide: ControlContainer, useExisting: NgForm }],
