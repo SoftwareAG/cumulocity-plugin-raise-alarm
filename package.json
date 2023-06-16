@@ -11,7 +11,7 @@
     "postinstall": "ngcc"
   },
   "repository": {
-    "type": "git",
+    "type": "git@github.com:SoftwareAG/cumulocity-plugin-raise-alarm.git"
   },
   "keywords": [],
   "author": "",
