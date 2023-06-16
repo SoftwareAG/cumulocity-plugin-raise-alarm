@@ -1,4 +1,4 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
 import { ControlContainer, NgForm } from "@angular/forms";
 import {
   DynamicComponent,
@@ -30,31 +30,54 @@ import {
         />
       </c8y-form-group>
       <c8y-form-group>
-        <label class="text-truncate" [title]="'Severity'">
-          {{ "Alarm Severity" }}
+          <label class="text-truncate" [title]="'Severity'">
+            {{ "Alarm Severity" }}
+          </label>
+          <p>{{config.severity}}</p>
+          <div class="c8y-select-wrapper">
+            <select
+              class="form-control"
+              (change)="selectionChanged($event)"
+              [(ngModel)]="config.severity"
+            >
+              <option
+                *ngFor="let entry of severities"
+                [style.background]="entry"
+              >
+                {{ entry }}
+              </option>
+            </select>
+          </div>
+        </c8y-form-group>
+      <c8y-form-group>
+        <label class="c8y-switch">
+          <input type="checkbox" [(ngModel)]="config.listen" />
+          <span></span>Listen to updates
         </label>
-        <div class="c8y-select-wrapper">
-          <select
-            class="form-control"
-            (change)="inputChange($event)"
-            [(ngModel)]="config.severity"
-          >
-            <option *ngFor="let entry of severities" [style.background]="entry">
-              {{ entry }}
-            </option>
-          </select>
-        </div>
+      </c8y-form-group>
+      <c8y-form-group *ngIf="config.listen">
+        <label [title]="'Listen to property'"> Listen to property </label>
+        <input
+          type="text"
+          style="width:100%"
+          [(ngModel)]="config.listenProperty"
+        />
       </c8y-form-group>
     </div>
   `,
   viewProviders: [{ provide: ControlContainer, useExisting: NgForm }],
 })
-export class RaiseAlarmPluginConfig implements DynamicComponent, OnBeforeSave {
+export class RaiseAlarmPluginConfig
+  implements DynamicComponent, OnBeforeSave, OnInit
+{
   @Input() config: any = {};
 
   severities: string[] = ["CRITICAL", "MAJOR", "MINOR", "WARNING"];
 
   constructor(private alert: AlertService) {}
+  ngOnInit(): void {
+    console.log(`Current config is: `, this.config);
+  }
 
   onBeforeSave(config: any): boolean {
     if (config.text.trim() === "") {
@@ -66,5 +89,9 @@ export class RaiseAlarmPluginConfig implements DynamicComponent, OnBeforeSave {
 
   inputChange(evt: any): void {
     console.log("Has changed:", evt);
+  }
+
+  selectionChanged(e) {
+    console.log(e);
   }
 }

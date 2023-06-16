@@ -20,21 +20,11 @@
  */
 import {
   Component,
-  EventEmitter,
   Input,
   OnInit,
-  Output,
-  ViewChild,
   ViewEncapsulation,
 } from "@angular/core";
 import { IAlarm } from "@c8y/client";
-import {
-  ConfirmModalComponent,
-  ModalLabels,
-  Status,
-  StatusType,
-  gettext,
-} from "@c8y/ngx-components";
 import { Subject } from "rxjs";
 
 @Component({
