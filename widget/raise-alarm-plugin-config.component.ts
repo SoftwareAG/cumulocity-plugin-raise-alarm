@@ -33,18 +33,18 @@ import {
           <label class="text-truncate" [title]="'Severity'">
             {{ "Alarm Severity" }}
           </label>
-          <p>{{config.severity}}</p>
           <div class="c8y-select-wrapper">
             <select
+              name="severity"
               class="form-control"
               (change)="selectionChanged($event)"
               [(ngModel)]="config.severity"
             >
               <option
                 *ngFor="let entry of severities"
-                [style.background]="entry"
+                [style.background]="entry" [ngValue]="entry"
               >
-                {{ entry }}
+                {{entry}}
               </option>
             </select>
           </div>
@@ -75,6 +75,7 @@ export class RaiseAlarmPluginConfig
   severities: string[] = ["CRITICAL", "MAJOR", "MINOR", "WARNING"];
 
   constructor(private alert: AlertService) {}
+
   ngOnInit(): void {
     console.log(`Current config is: `, this.config);
   }
@@ -92,6 +93,6 @@ export class RaiseAlarmPluginConfig
   }
 
   selectionChanged(e) {
-    console.log(e);
+    console.log("Changed configuration", e);
   }
 }
