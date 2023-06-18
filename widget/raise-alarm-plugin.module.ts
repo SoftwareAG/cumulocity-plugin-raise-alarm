@@ -25,7 +25,7 @@ import { RaiseAlarmModalComponent } from './alarm/raise-alarm.component';
           label: gettext('Raise alarm widget plugin'),
           description: 'Raise alarm widget plugin',
           component: RaiseAlarmPluginComponent,
-          previewImage: '/apps/cumulocity-raise-alarm/c8y-widget-preview-img/raise-alarm-preview.png',
+          previewImage: '/apps/sag-ps-pkg-raise-alarm/c8y-widget-preview-img/raise-alarm-preview.png',
           configComponent: RaiseAlarmPluginConfig
         }
       ] as DynamicComponentDefinition[]

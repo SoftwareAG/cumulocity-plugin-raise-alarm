@@ -11,7 +11,10 @@ import {
   template: `
     <div class="form-group">
       <c8y-form-group>
-        <label>Alarm Reason</label>
+        <label
+          >Alarm Reason, you can use {{ "$" }}{{ "{" }}iso_string{{ "}" }} or
+          {{ "$" }}{{ "{" }}timestamp{{ "}" }} as variables</label
+        >
         <textarea
           style="width:100%"
           [(ngModel)]="config.text"
@@ -30,25 +33,26 @@ import {
         />
       </c8y-form-group>
       <c8y-form-group>
-          <label class="text-truncate" [title]="'Severity'">
-            {{ "Alarm Severity" }}
-          </label>
-          <div class="c8y-select-wrapper">
-            <select
-              name="severity"
-              class="form-control"
-              (change)="selectionChanged($event)"
-              [(ngModel)]="config.severity"
+        <label class="text-truncate" [title]="'Severity'">
+          {{ "Alarm Severity" }}
+        </label>
+        <div class="c8y-select-wrapper">
+          <select
+            name="severity"
+            class="form-control"
+            (change)="selectionChanged($event)"
+            [(ngModel)]="config.severity"
+          >
+            <option
+              *ngFor="let entry of severities"
+              [style.background]="entry"
+              [ngValue]="entry"
             >
-              <option
-                *ngFor="let entry of severities"
-                [style.background]="entry" [ngValue]="entry"
-              >
-                {{entry}}
-              </option>
-            </select>
-          </div>
-        </c8y-form-group>
+              {{ entry }}
+            </option>
+          </select>
+        </div>
+      </c8y-form-group>
       <c8y-form-group>
         <label class="c8y-switch">
           <input type="checkbox" [(ngModel)]="config.listen" />

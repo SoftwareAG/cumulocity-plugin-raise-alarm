@@ -42,8 +42,11 @@ export class RaiseAlarmPluginComponent implements OnInit {
   }
 
   clickedRaiseAlarm() {
-    const ad: number = Date.now();
-    const text: string = this.config.text + "-" + ad;
+    const timestamp: number = Date.now();
+    const iso_string: string = new Date().toISOString();
+    //const text: string = this.config.text + "-" + timestamp;
+    //const text: string = `${this.config.text}`;
+    const text: string = eval('`'+ this.config.text +'`');
     const alarm: IAlarm = {
       severity: this.config.severity,
       source: { id: this.config?.device?.id },

@@ -1,6 +1,6 @@
 {
   "name": "raise-alarm",
-  "version": "1.0.5",
+  "version": "1.0.7",
   "description": "This widget allows to raise an alarm manually. The configuration allows to define: severity, alarm reason, and update behaviour.",
   "scripts": {
     "start": "c8ycli server",
@@ -11,10 +11,11 @@
     "postinstall": "ngcc"
   },
   "repository": {
-    "type": "git@github.com:SoftwareAG/cumulocity-plugin-raise-alarm.git"
+    "type": "git",
+    "url": "git@github.com:SoftwareAG/cumulocity-plugin-raise-alarm.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Christof Strack",
   "license": "ISC",
   "dependencies": {
     "@angular/animations": "14.0.6",
@@ -76,7 +77,8 @@
       },
       "copy": [
         {
-          "from": "widget/raise-alarm-preview.png", "to": "c8y-widget-preview-img/raise-alarm-preview.png",
+          "from": "resources/images", "to": "resources/images",
+          "from": "resources/images/raise-alarm-preview.png", "to": "c8y-widget-preview-img/raise-alarm-preview.png",
           "from": "README.md", "to": "README.md" 
         }
       ]

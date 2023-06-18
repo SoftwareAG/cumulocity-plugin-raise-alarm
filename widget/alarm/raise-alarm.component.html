@@ -26,7 +26,7 @@
     <div class="card-block">
       <div class="form-group">
         <c8y-form-group>
-          <label>Alarm Reason</label>
+          <label>Alarm Reason, you can use {{'$'}}{{'{'}}iso_string{{'}'}} or {{'$'}}{{'{'}}timestamp{{'}'}} as variables</label>
           <textarea
             style="width: 100%"
             [(ngModel)]="alarm.text"
