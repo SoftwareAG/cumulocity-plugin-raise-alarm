@@ -1,6 +1,6 @@
 {
   "name": "raise-alarm",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "This widget allows to raise an alarm manually. The configuration allows to define: severity, alarm reason, and update behaviour.",
   "scripts": {
     "start": "c8ycli server",
@@ -76,11 +76,9 @@
         ]
       },
       "copy": [
-        {
-          "from": "resources/images", "to": "resources/images",
-          "from": "resources/images/raise-alarm-preview.png", "to": "c8y-widget-preview-img/raise-alarm-preview.png",
-          "from": "README.md", "to": "README.md" 
-        }
+        { "from": "resources/images", "to": "resources/images" },
+        { "from": "resources/images/raise-alarm-preview.png", "to": "c8y-widget-preview-img/raise-alarm-preview.png" },
+        { "from": "README.md", "to": "README.md" }
       ]
     },
     "cli": {}
