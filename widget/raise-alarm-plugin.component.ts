@@ -74,9 +74,6 @@ export class RaiseAlarmPluginComponent implements OnInit {
   }
 
   async raiseAlarm(alarm: IAlarm) {
-    // const ad: number = Date.now();
-    // const text : string = this.config.text + "-" + ad;
-    // const alarm: IAlarm = {severity: this.config.severity, source :{ id: this.config?.device?.id} , text: text, type: this.config.type, time: new Date().toISOString()};
     const result: IAlarm = await this.service.createAlarm(alarm);
     console.log("Created new alarm: ", result);
     this.alerService.info("Created new alarm: " + result.id);
@@ -84,10 +81,15 @@ export class RaiseAlarmPluginComponent implements OnInit {
 
   newUpdate(p: any): void {
     const config = this.config;
-    console.log("New update: ", p, config);
+    //console.log("New update: ", p, config);
     let prop = p["data"]["data"][config.listenProperty];
     let data = p["data"]["data"];
-    this.alerService.info(`Update for alarm ${data.id}: ${config.listenProperty} = ${prop}`);
+    if (prop === undefined) {
+      console.log("New update not relevant: ", prop, data);
+    } else {
+      //console.log("New update relevant: ", prop, data);
+      this.alerService.info(`Update for alarm ${data.id}: ${config.listenProperty} = ${prop}`);
+    }
   }
 
 }
