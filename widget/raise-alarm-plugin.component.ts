@@ -14,7 +14,7 @@ import { RaiseAlarmModalComponent } from "./alarm/raise-alarm.component";
         class="btn btn-default"
         (click)="clickedRaiseAlarm()"
       >
-        Raise Alarm
+        {{config.buttonText}}
       </button>
     </div>
   `,

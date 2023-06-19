@@ -23,6 +23,16 @@ import {
         ></textarea>
       </c8y-form-group>
       <c8y-form-group>
+        <label>Button Text</label>
+        <input
+          style="width:100%"
+          placeholder="Raise Alarm"
+          [(ngModel)]="config.buttonText"
+          name="buttonText"
+          [required]="true"
+        />
+      </c8y-form-group>
+      <c8y-form-group>
         <label>Alarm Type</label>
         <input
           style="width:100%"
@@ -88,6 +98,9 @@ export class RaiseAlarmPluginConfig
     if (config.text.trim() === "") {
       this.alert.warning("Please enter a valid text.");
       return false;
+    }
+    if (config.buttonText.trim() === "") {
+      config.buttonText = "Button Textt"
     }
     return true;
   }
